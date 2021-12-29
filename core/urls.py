@@ -3,6 +3,8 @@ from .views import (
     ItemDetailView,
     CheckoutView,
     HomeView,
+    show_category_listings,
+
     OrderSummaryView,
     add_to_cart,
     remove_from_cart,
@@ -12,10 +14,17 @@ from .views import (
     RequestRefundView
 )
 
+from . import views
+
 app_name = 'core'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    # path('teclados/', TecladosView.as_view(), name='teclados'),
+    path("categories/<str:category>", views.show_category_listings, name="show"),
+    
+
+
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('product/<slug>/', ItemDetailView.as_view(), name='product'),

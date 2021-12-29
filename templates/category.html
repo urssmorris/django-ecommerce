@@ -23,11 +23,11 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">Todo
-              <!-- <span class="sr-only">(Actual)</span> -->
+              <span class="sr-only">(Actual)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/teclados">Teclados</a>
+            <a class="nav-link" href="#">Teclados</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Mouses</a>
@@ -61,9 +61,6 @@
           <div class="card h-100">
 
             <div class="container d-flex h-100" style="align-items:center;justify-content:center;">
-
-              <!-- {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
-                class="card-img-top"> {% endcomment %} -->
               <img src="{{ item.image.url }}" class="card-img-top" style="height:220px;width:200px;overflow:hidden;">
               <a href="{{ item.get_absolute_url }}">
                 <div class="mask rgba-white-slight"></div>

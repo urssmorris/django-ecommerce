@@ -7,9 +7,9 @@ from django_countries.fields import CountryField
 
 
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('OW', 'Outwear')
+    ('T', 'Teclados'),
+    ('M', 'Mouses'),
+    ('G', 'Gabinetes')
 )
 
 LABEL_CHOICES = (
@@ -23,6 +23,21 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
+#Mios
+
+# class Category(models.Model):
+#     name = models.CharField(max_length=255, db_index=True)
+#     slug = models.SlugField(max_length=255, unique=True)
+
+#     class Meta:
+#         verbose_name_plural = "categories"
+
+#     def __str__(self):
+#         return self.name
+
+
+
+#Default
 
 class UserProfile(models.Model):
     user = models.OneToOneField(

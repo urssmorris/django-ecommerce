@@ -14,6 +14,7 @@ from django.views.generic import ListView, DetailView, View
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
+from .models import *
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -347,9 +348,28 @@ class PaymentView(View):
 
 class HomeView(ListView):
     model = Item
-    paginate_by = 10
+    paginate_by = 12
     template_name = "home.html"
 
+###Mios 
+
+# class TecladosView(ListView):
+#     # model = Item.objects.filter(category__contains="T")
+#     context_object_name = 'teclados'
+#     queryset = Item.objects.filter(category__contains="T")
+#     template_name = 'category.html'
+
+
+def show_category_listings(request, category):
+    object_list = Item.objects.filter(category__in = category[0])
+    cat = dict(CATEGORY_CHOICES)
+    return render(request, 'category.html', {
+        "object_list": object_list,
+        "category": cat[category]
+    })
+
+
+####
 
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
