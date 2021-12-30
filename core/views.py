@@ -361,6 +361,21 @@ def show_category_listings(request, category):
         "category": cat[category]
     })
 
+#Search function
+# def search(request):
+#     q = request.GET.get('q').strip()
+#     if q in util.list_entries():
+#         return redirect("entry", title = q)
+#     return render(request, "search.html", {"entries": util.search(q), "q":q})
+
+def search(request):
+    if  request.method == "POST":
+        query_name = request.POST.get('title', None)
+        if query_name:
+            results = Item.objects.filter(name__contains=query_name)
+            return render(request, 'search.html', {"results":results})
+
+    return render(request, 'search.html')
 
 ####
 
