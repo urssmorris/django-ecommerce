@@ -353,13 +353,6 @@ class HomeView(ListView):
 
 ###Mios 
 
-# class TecladosView(ListView):
-#     # model = Item.objects.filter(category__contains="T")
-#     context_object_name = 'teclados'
-#     queryset = Item.objects.filter(category__contains="T")
-#     template_name = 'category.html'
-
-
 def show_category_listings(request, category):
     object_list = Item.objects.filter(category__in = category[0])
     cat = dict(CATEGORY_CHOICES)
