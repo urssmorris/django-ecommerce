@@ -94,3 +94,29 @@
 </main>
 
 {% endblock content %}
+
+<h1>HomePage</h1>
+
+<form action="{% url 'core:search' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
+
+<!-- {% for result in results %}
+
+<p>{{result.name}}</p>
+
+{% endfor %} -->
+
+
+<ul>
+  {% for item in object_list %}
+  <li>
+    {{ item.title }}
+  </li>
+  {% endfor %}
+</ul>
+
+</body>
+
+</html>

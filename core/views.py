@@ -10,7 +10,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, TemplateView
+from django.db.models import Q
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
@@ -348,7 +349,7 @@ class PaymentView(View):
 
 class HomeView(ListView):
     model = Item
-    paginate_by = 12
+    paginate_by = 20
     template_name = "home.html"
 
 ###Mios 
@@ -361,21 +362,18 @@ def show_category_listings(request, category):
         "category": cat[category]
     })
 
-#Search function
-# def search(request):
-#     q = request.GET.get('q').strip()
-#     if q in util.list_entries():
-#         return redirect("entry", title = q)
-#     return render(request, "search.html", {"entries": util.search(q), "q":q})
+#Search
+class SearchResultsView(ListView):
+    model = Item
+    paginate_by = 20
+    template_name = 'search.html'
 
-def search(request):
-    if  request.method == "POST":
-        query_name = request.POST.get('title', None)
-        if query_name:
-            results = Item.objects.filter(name__contains=query_name)
-            return render(request, 'search.html', {"results":results})
-
-    return render(request, 'search.html')
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        object_list = Item.objects.filter(
+            Q(title__icontains=query)
+        )
+        return object_list
 
 ####
 

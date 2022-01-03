@@ -4,14 +4,14 @@ from .views import (
     CheckoutView,
     HomeView,
     show_category_listings,
-    search,
     OrderSummaryView,
     add_to_cart,
     remove_from_cart,
     remove_single_item_from_cart,
     PaymentView,
     AddCouponView,
-    RequestRefundView
+    RequestRefundView,
+    SearchResultsView
 )
 
 from . import views
@@ -31,5 +31,5 @@ urlpatterns = [
          name='remove-single-item-from-cart'),
     path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
-    path('search/', views.search, name='search'),
+    path('search/', SearchResultsView.as_view(), name='search')
 ]
