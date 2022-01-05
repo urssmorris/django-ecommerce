@@ -23,18 +23,6 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
-#Mios
-
-# class Category(models.Model):
-#     name = models.CharField(max_length=255, db_index=True)
-#     slug = models.SlugField(max_length=255, unique=True)
-
-#     class Meta:
-#         verbose_name_plural = "categories"
-
-#     def __str__(self):
-#         return self.name
-
 
 
 #Default
@@ -57,7 +45,12 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField()
+    info = models.TextField(default="Informacion a Completar")
+    image = models.ImageField(blank=True)
+    image1 = models.ImageField(blank=True)
+    image2 = models.ImageField(blank=True)
+    image3 = models.ImageField(blank=True)
+  
 
     def __str__(self):
         return self.title
