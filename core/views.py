@@ -354,6 +354,7 @@ class HomeView(ListView):
 
 ###Mios 
 
+#Category listing
 def show_category_listings(request, category):
     object_list = Item.objects.filter(category__in = category[0])
     cat = dict(CATEGORY_CHOICES)
@@ -375,6 +376,10 @@ class SearchResultsView(ListView):
         )
         return object_list
 
+#Extra images
+
+
+
 ####
 
 class OrderSummaryView(LoginRequiredMixin, View):
@@ -393,7 +398,18 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product.html"
+    # slug_field = "slug"
+    # photos = ItemImage.objects.filter(main=True).order_by('item')
 
+# def detail_view(request, slug):
+    
+#     item = get_object_or_404(Item, slug=slug)
+#     photos = ItemImage.objects.filter(item=item)
+#     return render(request, "product.html", {
+#         "item":item,
+#         "photos":photos
+
+#     })
 
 @login_required
 def add_to_cart(request, slug):

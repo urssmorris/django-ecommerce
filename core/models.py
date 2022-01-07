@@ -37,6 +37,9 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+
+
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
@@ -47,9 +50,8 @@ class Item(models.Model):
     description = models.TextField()
     info = models.TextField(default="Informacion a Completar")
     image = models.ImageField(blank=True)
-    image1 = models.ImageField(blank=True)
-    image2 = models.ImageField(blank=True)
-    image3 = models.ImageField(blank=True)
+    # image = models.ForeignKey(Image, on_delete=models.CASCADE)
+   
   
 
     def __str__(self):
@@ -70,6 +72,13 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+
+class ItemImage(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE) 
+    images = models.ImageField()
+
+    def __str__(self):
+        return self.images.url
 
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,

@@ -94,8 +94,12 @@
 
       <!--Grid column-->
       <div class="col-lg-4 col-md-12 mb-4">
-
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+        {% for p in photos %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+          <img class="d-block w-100" src="{{p.images.url}}" alt="First slide">
+        </div>
+        {% endfor %}
+        <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt=""> -->
 
       </div>
       <!--Grid column-->
