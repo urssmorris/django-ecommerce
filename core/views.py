@@ -401,7 +401,7 @@ class ItemDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['photos'] = ItemImage.objects.all()
+        context['photos'] = ItemImage.objects.filter(item=self.object)
         return context
 
     # photos = ItemImage.objects.all()
