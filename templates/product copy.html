@@ -5,16 +5,16 @@
 <main class="mt-5 pt-4">
   <div class="container dark-grey-text mt-5">
 
-    <p style="font-size:30px ; color: rgb(46, 46, 209)"> <strong>{{ item.title }}</strong></p>
-
     <!--Grid row-->
     <div class="row wow fadeIn">
 
       <!--Grid column-->
       <div class="col-md-6 mb-4">
+
+        <!-- <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt=""> -->
         <img src="{{ item.image.url }}" style="height:auto;width:500px;">
       </div>
-
+      <!--Grid column-->
 
       <!--Grid column-->
       <div class="col-md-6 mb-4">
@@ -31,11 +31,11 @@
           <p class="lead">
             {% if object.discount_price %}
             <span class="mr-1">
-              <del><strong>${{ object.price }}</strong></del>
+              <del>${{ object.price }}</del>
             </span>
             <span>${{ object.discount_price }}</span>
             {% else %}
-            <span><strong>${{ object.price }}</strong></span>
+            <span>${{ object.price }}</span>
             {% endif %}
           </p>
 
@@ -61,51 +61,69 @@
           </a>
 
         </div>
+        <!--Content-->
 
       </div>
+      <!--Grid column-->
 
     </div>
-
+    <!--Grid row-->
 
     <hr>
 
-    <!--Aditional info-->
+    <!--Grid row-->
     <div class="row d-flex justify-content-center wow fadeIn">
+
+      <!--Grid column-->
       <div class="col-md-10 text-center">
+
         <h4 class="my-4 h4">Informacion Adicional</h4>
+
         <p class="dark-grey-text">
           {{ item.title }}: {{ item.info }}
         </p>
-      </div>
-    </div>
 
-    <!-- Carousel -->
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    <!--Grid row-->
     <div class="row wow fadeIn">
 
-      <div id="carouselInd" class="carousel slide" data-ride="carousel" data-interval="4000">
-        <div class="carousel-inner">
-          {% for p in photos %}
-          {% with forloop.counter0 as i %}
-          <div class="carousel-item {% if i is 0 %}active{% endif %}">
-            <img style="height:100px;width:auto" class="container d-flex h-75"
-              style="align-items:center;justify-content:center;" src="{{ p.images.url }}">
-          </div>
-          {% endwith %}
-          {% endfor %}
+      <!--Grid column-->
+      <div class="col-md-20 ">
+        <!-- {% for p in photos %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+          <img class="d-block w-100" src="{{p.images.url}}" alt="First slide">
         </div>
+        {% endfor %} -->
+        {% for p in photos %}
 
-        <!-- carousel buttons -->
-        <div style="text-align:center">
-          <a class="left carousel-control" href="#carouselInd" data-slide="prev" style="margin: 100px 10"
-            onclick="$('#carouselInd').carousel('prev')">‹‹‹</a>
-          <a class="right carousel-control" href="#carouselInd" data-slide="next"
-            onclick="$('#carouselInd').carousel('next')">›››</a>
-        </div>
+        <img style="height:auto;width:300px;" src="{{p.images.url}}">
+
+        {% endfor %}
 
       </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <!-- <div class="col-lg-4 col-md-6 mb-4">
+
+        
+      </div> -->
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <!-- <div class="col-lg-4 col-md-6 mb-4">
+
+        
+      </div> -->
+      <!--Grid column-->
 
     </div>
-
+    <!--Grid row-->
 
   </div>
 </main>

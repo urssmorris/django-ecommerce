@@ -15,6 +15,9 @@ class ImageInline(admin.StackedInline):
 class ItemAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
 
+    class Meta:
+        model = Item
+
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user',
                     'ordered',
@@ -61,6 +64,7 @@ class AddressAdmin(admin.ModelAdmin):
 
 
 
+admin.site.register(ItemImage)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(OrderItem)
 admin.site.register(Order, OrderAdmin)

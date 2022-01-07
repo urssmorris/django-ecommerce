@@ -398,8 +398,13 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product.html"
-    # slug_field = "slug"
-    # photos = ItemImage.objects.filter(main=True).order_by('item')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['photos'] = ItemImage.objects.all()
+        return context
+
+    # photos = ItemImage.objects.all()
 
 # def detail_view(request, slug):
     
