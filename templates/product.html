@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<main class="mt-5 pt-4">
-  <div class="container dark-grey-text mt-5">
+<main class="mt-0 pt-0">
+  <div class="container dark-grey-text mt-0">
 
     <p style="font-size:30px ; color: rgb(46, 46, 209)"> <strong>{{ item.title }}</strong></p>
 
@@ -12,7 +12,7 @@
 
       <!--Grid column-->
       <div class="col-md-6 mb-4">
-        <img src="{{ item.image.url }}" style="height:auto;width:500px;">
+        <img src="{{ item.image.url }}" style="height:auto;width:500px;max-width: 100%;">
       </div>
 
 
@@ -82,12 +82,12 @@
     <!-- Carousel -->
     <div class="row wow fadeIn">
 
-      <div id="carouselInd" class="carousel slide" data-ride="carousel" data-interval="4000">
+      <div id="carouselInd" class="carousel slide" data-ride="carousel" data-interval="4000" style="max-width: 100%;">
         <div class="carousel-inner">
           {% for p in photos %}
           {% with forloop.counter0 as i %}
           <div class="carousel-item {% if i is 0 %}active{% endif %}">
-            <img style="height:100px;width:auto" class="container d-flex h-75"
+            <img style="max-height:50%;width:100%;max-width: 100%;" class="container d-flex h-75"
               style="align-items:center;justify-content:center;" src="{{ p.images.url }}">
           </div>
           {% endwith %}
