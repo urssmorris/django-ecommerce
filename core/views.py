@@ -431,18 +431,18 @@ def add_to_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item.quantity += 1
             order_item.save()
-            messages.info(request, "This item quantity was updated.")
+            messages.info(request, "La Cantidad del Producto ha sido Actualizada")
             return redirect("core:order-summary")
         else:
             order.items.add(order_item)
-            messages.info(request, "This item was added to your cart.")
+            messages.info(request, "El Producto fue Añadido al Carrito")
             return redirect("core:order-summary")
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
-        messages.info(request, "This item was added to your cart.")
+        messages.info(request, "El Producto fue Añadido al Carrito")
         return redirect("core:order-summary")
 
 
@@ -464,13 +464,13 @@ def remove_from_cart(request, slug):
             )[0]
             order.items.remove(order_item)
             order_item.delete()
-            messages.info(request, "This item was removed from your cart.")
+            messages.info(request, "El Producto fue Removido del Carrito")
             return redirect("core:order-summary")
         else:
-            messages.info(request, "This item was not in your cart")
+            messages.info(request, "El Producto no se Encuentra en el Carrito")
             return redirect("core:product", slug=slug)
     else:
-        messages.info(request, "You do not have an active order")
+        messages.info(request, "No Posee una Orden Activa")
         return redirect("core:product", slug=slug)
 
 
@@ -495,10 +495,10 @@ def remove_single_item_from_cart(request, slug):
                 order_item.save()
             else:
                 order.items.remove(order_item)
-            messages.info(request, "La Cantidad de Este Articulo ha Sido Actualizada.")
+            messages.info(request, "La Cantidad del Producto ha Sido Actualizada.")
             return redirect("core:order-summary")
         else:
-            messages.info(request, "Este Artículo no Existe en el Carrito")
+            messages.info(request, "Este Producto no Existe en el Carrito")
             return redirect("core:product", slug=slug)
     else:
         messages.info(request, "No Existe una Orden Activa")
