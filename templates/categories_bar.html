@@ -1,4 +1,4 @@
-<nav class="navbar padding-top navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="padding-top: 60px;">
+<nav class="navbar padding-top navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="padding-top: 80px;">
 
   <!-- Navbar brand -->
   <span class="navbar-brand">Categorias:</span>
@@ -17,15 +17,13 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Todo</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/T">Teclados</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/M">Mouses</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/G">Gabinetes</a>
-      </li>
+
+      <ul>
+        {% for key, value in item %}
+        <li> {{ key }}: {{ value }}</li>
+        {% endfor %}
+      </ul>
+
 
     </ul>
 

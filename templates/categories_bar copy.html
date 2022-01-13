@@ -1,4 +1,4 @@
-<nav class="navbar padding-top navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="padding-top: 60px;">
+<nav class="navbar padding-top navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="padding-top: 80px;">
 
   <!-- Navbar brand -->
   <span class="navbar-brand">Categorias:</span>
@@ -26,19 +26,20 @@
       <li class="nav-item">
         <a class="nav-link" href="/categories/G">Gabinetes</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/categories/MT">Monitores</a>
+      </li>
 
     </ul>
-    <!-- Links -->
-    <form class="form-inline" method="POST" action="{% url 'core:search' %}">
+
+    <!-- Search bar -->
+    <form class="form-inline" action="{% url 'core:search' %}" method="get">
       {% csrf_token %}
       <div class="md-form my-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Search" name="name">
+        <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Search" name="q">
         <input type="submit" name="search">
       </div>
     </form>
-
-
-
 
   </div>
   <!-- Collapsible content -->

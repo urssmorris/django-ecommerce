@@ -14,8 +14,10 @@ from django.views.generic import ListView, DetailView, View, TemplateView
 from django.db.models import Q
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
-from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, CATEGORY_CHOICES
 from .models import *
+
+from django.core import serializers
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -352,11 +354,15 @@ class HomeView(ListView):
     paginate_by = 20
     template_name = "home.html"
 
+
+
 ###Mios 
+
+
 
 #Category listing
 def show_category_listings(request, category):
-    object_list = Item.objects.filter(category__in = category[0])
+    object_list = Item.objects.filter(category__contains = category[0])
     cat = dict(CATEGORY_CHOICES)
     return render(request, 'category.html', {
         "object_list": object_list,
@@ -376,7 +382,6 @@ class SearchResultsView(ListView):
         )
         return object_list
 
-#Extra images
 
 
 

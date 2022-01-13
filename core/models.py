@@ -7,9 +7,10 @@ from django_countries.fields import CountryField
 
 
 CATEGORY_CHOICES = (
-    ('T', 'Teclados'),
-    ('M', 'Mouses'),
-    ('G', 'Gabinetes')
+    ('TE', 'Teclados'),
+    ('MO', 'Mouses'),
+    ('GA', 'Gabinetes'),
+    ('MT', 'Monitores')
 )
 
 LABEL_CHOICES = (
@@ -50,9 +51,8 @@ class Item(models.Model):
     description = models.TextField()
     info = models.TextField(default="Informacion a Completar")
     image = models.ImageField(blank=True)
-    # image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    
    
-  
 
     def __str__(self):
         return self.title
