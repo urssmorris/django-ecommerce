@@ -17,18 +17,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Todo</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/T">Teclados</a>
+
+      
+
+      <li class="nav-item"></li>
+      {% for category in category %}
+      <div> {{ category.category }} </div>
+      {% endfor %}
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/M">Mouses</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/G">Gabinetes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories/MT">Monitores</a>
-      </li>
+
+
 
     </ul>
 

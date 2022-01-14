@@ -72,6 +72,8 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+    
+
 
 class ItemImage(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE) 

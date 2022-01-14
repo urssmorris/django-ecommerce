@@ -358,11 +358,17 @@ class HomeView(ListView):
 
 ###Mios 
 
+def CategoryView(request):
+    context = {
+        'category' : Item.objects.all()
+    } 
+
+    return render(request, 'categories_bar.html', context=context)
 
 
 #Category listing
 def show_category_listings(request, category):
-    object_list = Item.objects.filter(category__contains = category[0])
+    object_list = Item.objects.filter(category__contains = category)
     cat = dict(CATEGORY_CHOICES)
     return render(request, 'category.html', {
         "object_list": object_list,
@@ -409,17 +415,8 @@ class ItemDetailView(DetailView):
         context['photos'] = ItemImage.objects.filter(item=self.object)
         return context
 
-    # photos = ItemImage.objects.all()
 
-# def detail_view(request, slug):
-    
-#     item = get_object_or_404(Item, slug=slug)
-#     photos = ItemImage.objects.filter(item=item)
-#     return render(request, "product.html", {
-#         "item":item,
-#         "photos":photos
 
-#     })
 
 @login_required
 def add_to_cart(request, slug):
