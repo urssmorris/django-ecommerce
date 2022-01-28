@@ -4,7 +4,19 @@ from decouple import config
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-SECRET_KEY = config('SECRET_KEY')
+#####
+#SECRET_KEY = config('elgranKathogas3')
+SECRET_KEY = '8lu*6g0lg)9z!ba+a$ehk)xt)x%rxgb$i1&amp;022shmi1jcgihb*'
+
+#Mail config
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "urssmorris@gmail.com"
+EMAIL_HOST_PASSWORD = 'elgranKathogas3'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+####
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,7 +40,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -64,9 +76,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+#MEDIA_URL = '/media_root/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+#STATIC_ROOT = '/home/urssmorris/django-ecommerce/static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
 
 # Auth
 

@@ -1,4 +1,5 @@
 {% load cart_template_tags %}
+{% load account %}
 {% load static %}
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" style="padding-top: 20px;">
@@ -35,11 +36,19 @@
       <!-- Right -->
       <ul class="navbar-nav nav-flex-icons">
         {% if request.user.is_authenticated %}
+        
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="">
+            <span class="clearfix d-sm-inline-block">Usuario: </span>
+            <strong class="blue-text"> {% user_display user %}</strong>
+          </a>
+        </li>
+        
         <li class="nav-item">
           <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
-            <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-            <i class="fas fa-shopping-cart"></i>
             <span class="clearfix d-sm-inline-block"> Carrito </span>
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
           </a>
         </li>
         <li class="nav-item">
